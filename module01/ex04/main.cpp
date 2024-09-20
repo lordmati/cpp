@@ -15,16 +15,16 @@ int main (int argc,char **argv)
 	std::string s1 = argv[2];
 	std::string s2 = argv[3];
 	aux.append(".replace");
-	std::ofstream new_file(aux.c_str()); /// CREAR ARCHIVO NUEVO
-	if (!new_file)
-	{
-		std::cerr << "Error create new_file" << std::endl;
-		return (1);
-	}
 	std::ifstream openfd(fd);
 	if (!openfd)
 	{
 		std::cerr << "Error Openfd" << "\n";
+		return (1);
+	}
+	std::ofstream new_file(aux.c_str()); /// CREAR ARCHIVO NUEVO
+	if (!new_file)
+	{
+		std::cerr << "Error create new_file" << std::endl;
 		return (1);
 	}
 	while(getline(openfd,line))
