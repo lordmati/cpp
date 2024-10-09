@@ -36,7 +36,6 @@ int Fixed::toInt( void ) const
 }
 std::ostream  &operator<<(std::ostream &ret, const Fixed &data)
 {
-	std::cout << "Call Copy assignment operator <<" << std::endl;
 	ret << data.toFloat();
 	return ret;
 }
