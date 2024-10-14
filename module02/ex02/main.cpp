@@ -21,7 +21,6 @@ static void own_tests(void)
 	std::cout << "result b is greater or equal: " << (b >= d) << std::endl;
 	std::cout << "result b is smaller or equal: " << (b <= d) << std::endl;
 
-	//std::cout << b << " , " << e << std::endl;
 	std::cout << "result min is: " << Fixed::min(e, b) << std::endl;
 }
 
