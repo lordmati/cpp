@@ -1,8 +1,8 @@
-TARGET = PhoneBook
+TARGET = ClapTrap
 
-SRCS = PhoneBook.cpp \
-		main.cpp \
-		Contact.cpp \
+SRCS = main.cpp \
+	ClapTrap.cpp \
+	ScavTrap.cpp \
 
 OBJS = $(SRCS:.cpp=.o)
 

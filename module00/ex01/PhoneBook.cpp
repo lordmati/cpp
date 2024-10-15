@@ -1,23 +1,16 @@
-#include "phonebook.hpp"
+#include "PhoneBook.hpp"
 
-Phonebook::Phonebook()
+PhoneBook::PhoneBook()
 {
 	index = 0;
 	count_people = 0;
 }
 
-Phonebook::~Phonebook()
+PhoneBook::~PhoneBook()
 {
 	return ;
 }
-Contact::Contact()
-{
-	return ;
-}
-Contact::~Contact()
-{
-	return ;
-}
+
 
 int	indexreturn(std::string number)
 {
@@ -41,41 +34,6 @@ int	indexreturn(std::string number)
 		return(0);
 }
 
-void	Contact::printcontact(void)
-{
-	std::cout << "First Name: " << this->FirstName << "\n";
-	std::cout << "Last Name: " << this->LastName << "\n";
-	std::cout << "Nickname: " << this->NickName << "\n";
-	std::cout << "Number: " << this->Number << "\n";
-	std::cout << "Secret: " << this->Secret << "\n";
-}
-
-std::string Contact::getContact(std::string search)
-{
-	if(search == "firstname")
-	{
-		if (this->FirstName.length() < 10)
-			return(this->FirstName);
-		else
-			return(this->FirstName.substr(0,9) + ".");
-	}
-	else if (search == "lastname")
-	{
-		if (this->LastName.length() < 10)
-			return(this->LastName);
-		else
-			return(this->LastName.substr(0,9) + ".");		
-	}
-	else if (search == "nickname")
-	{
-		if (this->NickName.length() < 10)
-			return(this->NickName);
-		else
-			return(this->NickName.substr(0,9) + ".");
-	}
-	return "";
-}
-
 bool ft_isdigit(std::string str)
 {
 	int i = 0;
@@ -89,7 +47,7 @@ bool ft_isdigit(std::string str)
 	return (true);
 }
 
-void Phonebook::searchfunction()
+void PhoneBook::searchFunction()
 {
 	int i = 0;
 	std::string number = "";
@@ -139,7 +97,7 @@ void Phonebook::searchfunction()
 				{
 					if (indexreturn(number) <= this->count_people)
 					{
-						this->people[indexreturn(number) - 1].printcontact();
+						this->people[indexreturn(number) - 1].printContact();
 						return ;
 					}
 					else
@@ -153,21 +111,7 @@ void Phonebook::searchfunction()
 	}
 }
 
-void Contact::setContact(std::string people,std::string compare)
-{
-	if(compare == "firstname")
-		this->FirstName = people;
-	else if (compare == "lastname")
-		this->LastName = people;
-	else if (compare == "nickname")
-		this->NickName = people;
-	else if (compare == "number")
-		this->Number = people;
-	else if (compare == "secret")
-		this->Secret = people;
-}
-
-void Phonebook::addContact(void)
+void PhoneBook::addContact(void)
 {
 	Contact people;
 
@@ -239,25 +183,3 @@ void Phonebook::addContact(void)
 		this->count_people++;
 }
 
-int main (void)
-{
-	Phonebook book;
-	std::string option;
-	do
-	{	
-		option.erase();
-		std::cout << "CHOOSE ONE OPTION\n";
-		std::cout << "-> ADD\n";
-		std::cout << "-> SEARCH\n";
-		std::cout << "-> EXIT\n";
-		std::getline(std::cin,option);
-		if (std::cin.eof() || !std::cin.good())
-			exit(1);
-		if (option == "ADD")
-			book.addContact();
-		else if (option == "SEARCH")
-			book.searchfunction();
-		else if (!option.empty() && option != "EXIT")
-			std::cout << "INVALID OPTION\n";
-	} while(option != "EXIT");
-}
