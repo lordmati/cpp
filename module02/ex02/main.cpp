@@ -4,11 +4,13 @@ static void own_tests(void)
 {
 	std::cout << "\n------WELCOME TO MY OWN TESTS------\n\n";
 
-	Fixed b = 10;
+	Fixed b(10);
 	Fixed c = 10;
 	Fixed d = 5;
+
 	const Fixed e = 7;
 
+	std::cout << "result b + 2: " << (b + 2) << std::endl;
 	std::cout << "result b + c: " << (b + c)  << std::endl;
 	std::cout << "result b - c: " << (b - c) << std::endl;
 	std::cout << "result b * c: " << (b * c) << std::endl;

@@ -16,14 +16,10 @@ Fixed::Fixed(const Fixed &data)
 }
 Fixed::Fixed(int num)
 {
-	std::cout << "Call int num constructor" << std::endl;
-	//convertir num a fixpoint y guardarlo
 	this->Number = num << bits;
 }
 Fixed::Fixed(float num)
 {
-	std::cout << "Call float num constructor" << std::endl;
-	//convertir float a fixpoint y guardarlo
 	this->Number = static_cast<int>(roundf(num * (1 << bits)));
 }
 float Fixed::toFloat( void ) const
