@@ -42,7 +42,7 @@ int main (int argc,char **argv)
 		new_file.close();
 		return (0);
 	}
-	else
+	else if (s1.length() > 0)
 	{
 		while (pos != std::string::npos)
 		{
