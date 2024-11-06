@@ -3,27 +3,44 @@
 #include "Cat.hpp"
 #include "WrongCat.hpp"
 #include "Dog.hpp"
+#include "Brain.hpp"
 
 int main()
 {
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
-	const WrongAnimal *Wrong = new WrongAnimal();
-	const WrongAnimal *_cat = new WrongCat;
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	std::cout << _cat->getType() << " " << std::endl;
-	i->makeSound(); //will output the cat sound!
-	j->makeSound();
-	meta->makeSound();
-	_cat->makeSound();
-	Wrong->makeSound();
-
-	delete j;
-	delete i;
-	delete meta;
-	delete _cat;
-	delete Wrong;
-	return 0;
+	int x = 10;
+	Animal *AnimalArray[x];
+	int i = 0;
+	std::cout << "----------------Create a Dog----------------" << std::endl;
+	while(i < x / 2)
+	{
+		AnimalArray[i] = new Dog();
+		i++;
+	}
+	std::cout << "----------------Create a Cat----------------" << std::endl;
+	while(i < x)
+	{
+		AnimalArray[i] = new Cat();
+		i++;
+	}
+	std::cout << "----------------Animal Sounds----------------" << std::endl;
+	i = 0;
+	while(i < x)
+	{
+		AnimalArray[i]->getType();
+		AnimalArray[i]->makeSound();
+		i++;
+	}
+	i = 0;
+	std::cout << "----------------Destructor----------------" << std::endl;
+	while(i < x)
+	{
+		delete AnimalArray[i];
+		i++;
+	}
+	std::cout << "----------------Check deep copy----------------" << std::endl;
+	Dog		first_dog;
+	Dog		second_dog = first_dog;
+	std::cout << "First Memory address: " << &first_dog.getIdeas() << std::endl;
+	std::cout << "Second Memory address: " << &second_dog.getIdeas() << std::endl;
+	std::cout << "----------------Destructor----------------" << std::endl;
 }

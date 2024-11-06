@@ -4,7 +4,7 @@ int main (int argc,char **argv)
 {
 	if(argc != 4)
 	{
-		std::cerr << "Error arguments incorrect" << "\n";
+		std::cerr << "Error: arguments incorrect" << "\n";
 		return (1);
 	}
 	const char *fd = argv[1];
@@ -13,18 +13,23 @@ int main (int argc,char **argv)
 	std::string save_fd;
 	std::string aux = std::string(fd);
 	std::string s1 = argv[2];
+	if (s1.length() == 0)
+	{
+		std::cout << "Error: s1 is empty" << std::endl;
+		return(1);
+	}
 	std::string s2 = argv[3];
 	aux.append(".replace");
 	std::ifstream openfd(fd);
 	if (!openfd)
 	{
-		std::cerr << "Error Openfd" << "\n";
+		std::cerr << "Error: Openfd" << "\n";
 		return (1);
 	}
 	std::ofstream new_file(aux.c_str()); /// CREAR ARCHIVO NUEVO
 	if (!new_file)
 	{
-		std::cerr << "Error create new_file" << std::endl;
+		std::cerr << "Error: create new_file" << std::endl;
 		return (1);
 	}
 	while(getline(openfd,line))
@@ -42,7 +47,7 @@ int main (int argc,char **argv)
 		new_file.close();
 		return (0);
 	}
-	else if (s1.length() > 0)
+	else
 	{
 		while (pos != std::string::npos)
 		{
