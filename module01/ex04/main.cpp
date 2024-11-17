@@ -26,7 +26,7 @@ int main (int argc,char **argv)
 		std::cerr << "Error: Openfd" << "\n";
 		return (1);
 	}
-	std::ofstream new_file(aux.c_str()); /// CREAR ARCHIVO NUEVO
+	std::ofstream new_file(aux.c_str());
 	if (!new_file)
 	{
 		std::cerr << "Error: create new_file" << std::endl;
@@ -43,7 +43,7 @@ int main (int argc,char **argv)
 	pos = save_fd.find(s1);
 	if (pos == std::string::npos)
 	{
-		new_file << save_fd; //// GUARDAR EN EL ARCHIVO
+		new_file << save_fd;
 		new_file.close();
 		return (0);
 	}

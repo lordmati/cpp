@@ -2,12 +2,12 @@
 
 Harl::Harl()
 {
-	std::cout << "Constructora harl\n"; 
+	std::cout << "Constructor harl\n"; 
 }
 
 Harl::~Harl()
 {
-	std::cout << "Destructora harl\n";
+	std::cout << "Destructor harl\n";
 }
 void Harl::debug(void)
 {
@@ -38,5 +38,5 @@ void Harl::complain(std::string level)
 			return ;
 		}
 	}
-	std::cout << "No encontrado" << std::endl;
+	std::cout << "Not found" << std::endl;
 }

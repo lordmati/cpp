@@ -2,12 +2,12 @@
 
 HumanA::HumanA(std::string name, Weapon &weapon) : weapon(weapon) , name(name)
 {
-	std::cout << "Constructora Human A" << "\n";
+	std::cout << "Constructor Human A" << "\n";
 }
 
 HumanA::~HumanA()
 {
-	std::cout << "Destructora Human A" << "\n";
+	std::cout << "Destructor Human A" << "\n";
 	return ;
 }
 

@@ -8,12 +8,12 @@ Weapon::Weapon()
 Weapon::Weapon(std::string newtype)
 {
 	this->type = newtype;
-	std::cout << "Constructora de Weapon." << std::endl;
+	std::cout << "Weapon Builder." << std::endl;
 }
 
 Weapon::~Weapon()
 {
-	std::cout << "Destructora de weapon" << "\n";
+	std::cout << "Weapon Destroyer" << "\n";
 	return ;
 }
 
