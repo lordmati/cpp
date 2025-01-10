@@ -1,16 +1,16 @@
-#include "Form.hpp"
+#include "AForm.hpp"
 
-Form::Form():name("NULL"),sigit(0),exeit(0)
+AForm::AForm():name("NULL"),sigit(0),exeit(0)
 {
-	std::cout << "Form constructor" << std::endl;
+	std::cout << "AForm constructor" << std::endl;
 	this->sign = false;
 }
-Form::Form(const Form &data):name(data.name),sigit(data.sigit),exeit(data.exeit)
+AForm::AForm(const AForm &data):name(data.name),sigit(data.sigit),exeit(data.exeit)
 {
-	std::cout << "Form constructor copy" << std::endl;
+	std::cout << "AForm constructor copy" << std::endl;
 	this->sign = data.sign;
 }
-Form::Form(const char *nameP,const int sigitP,const int exeitP):name(nameP),sigit(sigitP),exeit(exeitP)
+AForm::AForm(const char *nameP,const int sigitP,const int exeitP):name(nameP),sigit(sigitP),exeit(exeitP)
 {
 	try
 	{
@@ -24,44 +24,44 @@ Form::Form(const char *nameP,const int sigitP,const int exeitP):name(nameP),sigi
 		std::cerr << e.what();
 	}
 }
-Form &Form::operator=(const Form &data)
+AForm &AForm::operator=(const AForm &data)
 {
-	std::cout << "Form operator constructor" << std::endl;
+	std::cout << "AForm operator constructor" << std::endl;
 	if (this != &data)
 		*this = data;
 	return (*this);
 }
-std::string Form::getName() const
+std::string AForm::getName() const
 {
 	return(this->name);
 }
-int Form::getSigit() const
+int AForm::getSigit() const
 {
 	return(this->sigit);
 }
-int Form::getExeit() const
+int AForm::getExeit() const
 {
 	return(this->exeit);
 }
-bool Form::getSign() const
+bool AForm::getSign() const
 {
 	return(this->sign);
 }
-const char *Form::GradeTooLowException::what() const throw()
+const char *AForm::GradeTooLowException::what() const throw()
 {
 	return("Error Form: Low\n");
 }
 
-const char *Form::GradeTooHighException::what() const throw()
+const char *AForm::GradeTooHighException::what() const throw()
 {
 	return("Error Form: High\n");
 }
-void Form::beSigned(Bureaucrat &person)
+void AForm::beSigned(Bureaucrat &person)
 {
 	try
 	{
 		if(person.getGrade() > this->getSigit())
-			throw(Form::GradeTooLowException());
+			throw(AForm::GradeTooLowException());
 		this->sign = true;
 	}
 	catch(const std::exception& e)
@@ -83,14 +83,14 @@ std::string BoolToString(bool data)
 		return("True");
 	return("False");
 }
-std::ostream& operator<<(std::ostream& ret,Form& data)
+std::ostream& operator<<(std::ostream& ret,AForm& data)
 {
 	ret << data.getName() + " state bool " + BoolToString(data.getSign())
 		+ " sigIt " + IntToString(data.getSigit())
 		+ " sigExeit " + IntToString(data.getExeit());
 	return(ret);
 }
-Form::~Form()
+AForm::~AForm()
 {
 	std::cout << "Destructor Form" << std::endl;
 }

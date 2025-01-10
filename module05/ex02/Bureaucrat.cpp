@@ -88,7 +88,7 @@ std::ostream& operator<<(std::ostream& ret,Bureaucrat& data)
 	ret << data.getName() + ", bureaucrat grade " + str;
 	return(ret);
 }
-void Bureaucrat::signForm(Form &data)
+void Bureaucrat::signForm(AForm &data)
 {
 	try
 	{
