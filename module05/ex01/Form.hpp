@@ -3,6 +3,8 @@
 
 #include "Bureaucrat.hpp"
 
+
+class Bureaucrat;
 class Form
 {
 	private:
@@ -19,7 +21,7 @@ class Form
 		bool getSign();
 		int getSigit() const;
 		int getExeit() const;
-		Form beSigned(Bureaucrat &person);
+		void beSigned(Bureaucrat &person);
 		class GradeTooHighException : public std::exception
 		{
 			public:
@@ -33,7 +35,7 @@ class Form
 		~Form();
 
 };
-std::ostream& operator<<(std::ostream& ret, Bureaucrat& data);
+std::ostream& operator<<(std::ostream& ret, Form& data);
 std::string IntToString(int num);
 std::string BoolToString(bool data);
 #endif

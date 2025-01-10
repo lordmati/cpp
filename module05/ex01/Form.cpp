@@ -21,7 +21,7 @@ Form::Form(const char *nameP,const int sigitP,const int exeitP):name(nameP),sigi
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << '\n';
+		std::cerr << e.what();
 	}
 }
 Form &Form::operator=(const Form &data)
@@ -56,7 +56,7 @@ const char *Form::GradeTooHighException::what() const throw()
 {
 	return("Error Form: High\n");
 }
-Form Form::beSigned(Bureaucrat &person)
+void Form::beSigned(Bureaucrat &person)
 {
 	try
 	{
@@ -66,7 +66,7 @@ Form Form::beSigned(Bureaucrat &person)
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << '\n';
+		std::cerr << e.what();
 	}
 }
 std::string IntToString(int num)
@@ -87,7 +87,7 @@ std::ostream& operator<<(std::ostream& ret,Form& data)
 {
 	ret << data.getName() + " state bool " + BoolToString(data.getSign())
 		+ " sigIt " + IntToString(data.getSigit())
-		+ " sigExeit" + IntToString(data.getExeit());
+		+ " sigExeit " + IntToString(data.getExeit());
 	return(ret);
 }
 Form::~Form()
