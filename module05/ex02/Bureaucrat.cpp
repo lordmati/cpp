@@ -101,6 +101,13 @@ void Bureaucrat::signForm(AForm &data)
 		std::cerr << this->name << " couldn't sign " << data.getName() << " because " << e.what();
 	}
 }
+void Bureaucrat::executeForm(AForm const & form)
+{
+	if(form.execute(*this) == 0)
+		std::cout << this->getName() << " executed " << form.getName() << std::endl;
+	else
+		std::cout << this->getName() << " not executed " << form.getName() << std::endl;
+} 
 Bureaucrat::~Bureaucrat()
 {
 	std::cout << "Bureaucrat destructor" << std::endl;

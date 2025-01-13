@@ -20,12 +20,14 @@ RobotomyRequestForm::RobotomyRequestForm(std::string target):AForm("RobotomyRequ
 	std::cout << "Constructor RobotomyRequestForm target" << std::endl;
 	this->target = target;
 }
-void RobotomyRequestForm::execute(Bureaucrat const & execute) const
+int RobotomyRequestForm::execute(Bureaucrat const & execute) const
 {
 	try
 	{
 		if(execute.getGrade() > this->getExeit())
-			throw(AForm::GradeTooLowException()); //AGREGAR MAS COSAS
+			throw(AForm::GradeTooLowException());
+		if (execute.getGrade() < 1)
+			throw(AForm::GradeTooHighException());
 		if(this->getSign() == true)
 		{
 			srand((int)time(0));
@@ -33,14 +35,22 @@ void RobotomyRequestForm::execute(Bureaucrat const & execute) const
 			if(rand() % 2 == 0)
 				std::cout << this->target << " has been robotomized" << std::endl;
 			else
-				std::cout << "NO SE ROBOTIZO" << std::endl;
+			{
+				std::cout << "Not robotic" << std::endl;
+				return(1);
+			}
 		}
 		else
+		{
 			std::cout << "It is not signed" << std::endl;
+			return(1);
+		}
+		return(0);
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what();
+		return(1);
 	}
 }
 RobotomyRequestForm::~RobotomyRequestForm()
