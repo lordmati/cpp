@@ -85,26 +85,34 @@ bool checkPoint(std::string str)
 	int i = 0;
 	while(str[i])
 	{
-		if(str[i] == '.' && str[i + 1] == '0')
-			return(true);
+		if(str[i] == '.')
+		{
+			i++;
+			while(str[i])
+			{
+				if(str[i] != '0' && str[i] != 'f')
+					return(false);
+				i++;
+			}
+		}
 		i++;
 	}
-	return(false);
+	return(true);
 }
 int checkType(std::string str)
 {
+	if(str == "+inf" || str == "inf" || str == "inff" || str == "+inff")
+		return(3);
+	if(str == "-inf" || str == "-inff")
+		return(4);
+	if (str == "nan" || str == "+nan" || str == "nanf" || str == "+nanf")
+		return(0);
+	if (str == "-nan" || str == "-nanf")
+		return(7);
 	if(isNumeric(str) == true || str[0] == '+' || str[0] == '-')
 		return(1);
 	if(str.size() == 1 && str[0] >= 32 && str[0] <= 126)
 		return(2);
-	if (str == "nan" || str == "+nan")
-		return(0);
-	if (str == "-nan")
-		return(7);
-	if(str == "+inf" || str == "inf")
-		return(3);
-	if(str == "-inf")
-		return(4);
 	if(countChar(str,'.') == 1)
 	{
 		std::string aux = str;
