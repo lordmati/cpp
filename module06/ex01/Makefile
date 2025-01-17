@@ -1,9 +1,7 @@
 TARGET = serializer
 
 SRCS = main.cpp \
-		ScalarConverter.cpp \
-		utils.cpp \
-		print.cpp \
+		Serializer.cpp \
 
 OBJS = $(SRCS:.cpp=.o)
 
