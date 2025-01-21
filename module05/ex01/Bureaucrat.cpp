@@ -8,7 +8,8 @@ Bureaucrat::Bureaucrat():name("NAME")
 Bureaucrat::Bureaucrat(const Bureaucrat &data):name(data.name)
 {
 	std::cout << "Bureaucrat constructor copy" << std::endl;
-	this->grade = data.grade;
+	if (this != &data)
+		*this = data;
 }
 Bureaucrat::Bureaucrat(const char *nameP,int range):name(nameP)
 {
@@ -57,10 +58,9 @@ void Bureaucrat::decrementRange(void)
 }
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &data)
 {
-	std::cout << "Bureaucrat operator constructor" << std::endl;
-	if (this != &data)
-		*this = data;
-	return(*this);
+	std::cout << "Bureaucrat assignament operator" << std::endl;
+	this->grade = data.grade;
+	return *this;
 }
 const std::string Bureaucrat::getName()
 {

@@ -8,7 +8,8 @@ Form::Form():name("NULL"),sigit(0),exeit(0)
 Form::Form(const Form &data):name(data.name),sigit(data.sigit),exeit(data.exeit)
 {
 	std::cout << "Form constructor copy" << std::endl;
-	this->sign = data.sign;
+	if (this != &data)
+		*this = data;
 }
 Form::Form(const char *nameP,const int sigitP,const int exeitP):name(nameP),sigit(sigitP),exeit(exeitP)
 {
@@ -26,9 +27,8 @@ Form::Form(const char *nameP,const int sigitP,const int exeitP):name(nameP),sigi
 }
 Form &Form::operator=(const Form &data)
 {
-	std::cout << "Form operator constructor" << std::endl;
-	if (this != &data)
-		*this = data;
+	std::cout << "Form assignament operator" << std::endl;
+	this->sign = data.sign;
 	return (*this);
 }
 std::string Form::getName() const

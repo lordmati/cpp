@@ -6,14 +6,14 @@ Serializer::Serializer()
 }
 Serializer &Serializer::operator=(const Serializer &data)
 {
-	if(this != &data)
-		*this = data;
+	(void)data;
 	return(*this);
 }
 Serializer::Serializer(const Serializer &data)
 {
 	std::cout << "Serializer constructor copy" << std::endl;
-	(void)data;
+	if(this != &data)
+		*this = data;
 }
 Serializer::~Serializer()
 {

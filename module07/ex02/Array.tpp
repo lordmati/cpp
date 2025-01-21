@@ -18,21 +18,15 @@ template <typename T>
 Array<T>::Array(const Array &data)
 {
 	std::cout << "Array constructor copy" << std::endl;
-	int i = 0;
-	this->array = new T[data.len];
-	while(i < data.len)
-	{
-		this->array[i] = data.array[i];
-		i++;
-	}
-	this->len = data.len;
+	if (this != &data)
+		*this = data;
 }
 template <typename T>
 Array<T> &Array<T>::operator=(const Array &data)
 {
 	int i = 0;
 	this->array = new T[data.len];
-	std::cout << "Array operator constructor" << std::endl;
+	std::cout << "Array assignament operator" << std::endl;
 	while(i < data.len)
 	{
 		this->array[i] = data.array[i];

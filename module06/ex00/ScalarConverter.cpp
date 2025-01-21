@@ -10,14 +10,14 @@ ScalarConverter::~ScalarConverter()
 }
 ScalarConverter &ScalarConverter::operator=(const ScalarConverter &data)
 {
-	if(this != &data)
-		*this = data;
+	(void)data;
 	return(*this);
 }
 ScalarConverter::ScalarConverter(const ScalarConverter &data)
 {
 	std::cout << "ScalarConverter constructor copy" << std::endl;
-	(void)data;
+	if(this != &data)
+		*this = data;
 }
 void ScalarConverter::convert(std::string str)
 {
