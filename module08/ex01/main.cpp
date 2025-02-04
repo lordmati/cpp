@@ -18,10 +18,12 @@ int main(void)
 
 		std::vector<int> numbers;
 		std::vector<int>error;
-		for (unsigned int i = 0; i < 10000; ++i) {
+		for (unsigned int i = 0; i < 10000; ++i)
+		{
 			numbers.push_back(i);
 		}
-		for (unsigned int i = 0; i < 9; ++i) {
+		for (unsigned int i = 0; i < 9; ++i)
+		{
 			error.push_back(i);
 		}
 		errorSpan.addMultipleNumbers(numbers.begin(),numbers.end());
@@ -30,7 +32,8 @@ int main(void)
 		std::cout << "Shortest Span (large): " << largeSpan.shortestSpan() << std::endl;
 		std::cout << "Longest Span (large): " << largeSpan.longestSpan() << std::endl;
 
-	} catch (const std::exception &e) {
+	} catch (const std::exception &e)
+	{
 		std::cerr << "Exception: " << e.what() << std::endl;
 	}
 
