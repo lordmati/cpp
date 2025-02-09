@@ -7,12 +7,13 @@ PresidentialPardonForm::PresidentialPardonForm():target("TARGET")
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &data):AForm("PresidentialPardonForm",25,5),target(data.target)
 {
 	std::cout << "Constructor copy PresidentialPardonForm" << std::endl;
+	if(this != &data)
+		*this = data;
 }
 PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPardonForm &data)
 {
-	std::cout << "PresidentialPardonForm Constructor Operator" << std::endl;
-	if(this != &data)
-		*this = data;
+	std::cout << "PresidentialPardonForm Assignament Operator" << std::endl;
+	(void)data;
 	return(*this);
 }
 PresidentialPardonForm::~PresidentialPardonForm()

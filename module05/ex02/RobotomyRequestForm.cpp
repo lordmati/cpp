@@ -7,12 +7,13 @@ RobotomyRequestForm::RobotomyRequestForm():target("TARGET")
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &data):AForm("RobotomyRequestForm",72,45),target(data.target)
 {
 	std::cout << "Constructor copy RobotomyRequestForm" << std::endl;
+	if(this != &data)
+		*this = data;
 }
 RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &data)
 {
-	std::cout << "RobotomyRequestForm Constructor Operator" << std::endl;
-	if(this != &data)
-		*this = data;
+	std::cout << "RobotomyRequestForm Assignament Operator" << std::endl;
+	(void)data;
 	return(*this);
 }
 RobotomyRequestForm::RobotomyRequestForm(std::string target):AForm("RobotomyRequestForm",72,45)
