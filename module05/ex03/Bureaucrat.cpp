@@ -8,7 +8,8 @@ Bureaucrat::Bureaucrat():name("NAME")
 Bureaucrat::Bureaucrat(const Bureaucrat &data):name(data.name)
 {
 	std::cout << "Bureaucrat constructor copy" << std::endl;
-	this->grade = data.grade;
+	if (this != &data)
+		*this = data;
 }
 Bureaucrat::Bureaucrat(const char *nameP,int range):name(nameP)
 {
@@ -16,9 +17,9 @@ Bureaucrat::Bureaucrat(const char *nameP,int range):name(nameP)
 	try
 	{
 		if(range < 1)
-			throw(Bureaucrat::GradeTooHighException());
+		throw(Bureaucrat::GradeTooHighException());
 		else if (range > 150)
-			throw(Bureaucrat::GradeTooLowException());
+		throw(Bureaucrat::GradeTooLowException());
 	}
 	catch(std::exception & e)
 	{	
@@ -31,9 +32,9 @@ void Bureaucrat::incrementRange(void)
 	try
 	{
 		if(this->grade < 1)
-			throw(Bureaucrat::GradeTooHighException());
+		throw(Bureaucrat::GradeTooHighException());
 		else if (this->grade > 150)
-			throw(Bureaucrat::GradeTooLowException());
+		throw(Bureaucrat::GradeTooLowException());
 	}
 	catch(std::exception & e)
 	{	
@@ -46,9 +47,9 @@ void Bureaucrat::decrementRange(void)
 	try
 	{
 		if(this->grade < 1)
-			throw(Bureaucrat::GradeTooHighException());
+		throw(Bureaucrat::GradeTooHighException());
 		else if (this->grade > 150)
-			throw(Bureaucrat::GradeTooLowException());
+		throw(Bureaucrat::GradeTooLowException());
 	}
 	catch(std::exception & e)
 	{	
@@ -57,9 +58,8 @@ void Bureaucrat::decrementRange(void)
 }
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &data)
 {
-	std::cout << "Bureaucrat operator constructor" << std::endl;
-	if (this != &data)
-		*this = data;
+	std::cout << "Bureaucrat Assignament operator" << std::endl;
+	this->grade = data.grade;
 	return(*this);
 }
 const std::string Bureaucrat::getName()

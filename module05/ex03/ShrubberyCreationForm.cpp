@@ -7,12 +7,13 @@ ShrubberyCreationForm::ShrubberyCreationForm():target("TARGET")
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &data):AForm("ShrubberyCreationForm",145,137),target(data.target)
 {
 	std::cout << "ShrubberyCreationForm constructor copy" << std::endl;
+	if(this != &data)
+		*this = data;
 }
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &data)
 {
-	std::cout << "ShrubberyCreationForm Constructor Operator" << std::endl;
-	if(this != &data)
-		*this = data;
+	std::cout << "ShrubberyCreationForm Assignament Operator" << std::endl;
+	(void)data;
 	return(*this);
 }
 ShrubberyCreationForm::~ShrubberyCreationForm()

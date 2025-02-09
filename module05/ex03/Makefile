@@ -1,5 +1,5 @@
 
-TARGET = AForm
+TARGET = Intern
 
 SRCS = Bureaucrat.cpp \
 		main.cpp \

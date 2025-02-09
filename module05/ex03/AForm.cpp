@@ -8,17 +8,18 @@ AForm::AForm():name("NULL"),sigit(0),exeit(0)
 AForm::AForm(const AForm &data):name(data.name),sigit(data.sigit),exeit(data.exeit)
 {
 	std::cout << "AForm constructor copy" << std::endl;
-	this->sign = data.sign;
-}
+	if (this != &data)
+		*this = data;
+	}
 AForm::AForm(const char *nameP,const int sigitP,const int exeitP):name(nameP),sigit(sigitP),exeit(exeitP)
 {
 	try
-	{
-		if(sigitP > 150 || exeitP > 150)
+		{
+			if(sigitP > 150 || exeitP > 150)
 			throw(GradeTooLowException());
-		else if (sigitP < 1 || exeitP < 1)
+			else if (sigitP < 1 || exeitP < 1)
 			throw(GradeTooHighException());
-	}
+		}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what();
@@ -26,9 +27,8 @@ AForm::AForm(const char *nameP,const int sigitP,const int exeitP):name(nameP),si
 }
 AForm &AForm::operator=(const AForm &data)
 {
-	std::cout << "AForm operator constructor" << std::endl;
-	if (this != &data)
-		*this = data;
+	std::cout << "AForm Assignament operator" << std::endl;
+	this->sign = data.sign;
 	return (*this);
 }
 std::string AForm::getName() const

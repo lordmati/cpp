@@ -6,15 +6,16 @@ Intern::Intern()
 }
 Intern &Intern::operator=(const Intern &data)
 {
-	if(this != &data)
-		*this = data;
+	std::cout << "Intern Assignament operator" << std::endl;
+	(void)data;
 	return(*this);
 }
 
 Intern::Intern(const Intern &data)
 {
 	std::cout << "Intern Constructor copy" << std::endl;
-	(void)data;
+	if(this != &data)
+		*this = data;
 }
 Intern::~Intern()
 {
