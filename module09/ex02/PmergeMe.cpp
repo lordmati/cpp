@@ -10,8 +10,8 @@ bool checkArgv(char **argv)
 				;
 			else
 			{
-				std::cout << argv[i][j] << std::endl;
 				std::cout << "Error: " << std::endl;
+				std::cout << argv[i][j] << std::endl;
 				return (false);
 			}
 		}
@@ -75,40 +75,39 @@ void makeVector(char **str, int argc)
 void mergeInsertionSortVector(std::vector<int> &n)
 {
 	int size = n.size();
+
 	if (size < 1)
 	{
 		std::cout << "One number" << std::endl;
 		return ;
 	}
+	std::cout << "size: " << size << std::endl;
 	std::vector<int> winners, losers;
-	for(int i = 0; i + 1 < size; i+=2)
+	for(int i = 0; i + 1< size; i+=2)
 	{
 		if(n[i] < n[i + 1])
 		{
 			winners.push_back(n[i + 1]);
 			losers.push_back(n[i]);
+			std::cout << n[i + 1] << std::endl;
 		}
 		else
 		{
 			winners.push_back(n[i]);
 			losers.push_back(n[i + 1]);
+			std::cout << n[i] << std::endl;
 		}
 	}
 	if(size % 2 != 0)
 		winners.push_back(n[size - 1]);
 	winnerSort(winners);
-	std::vector<int> sorted;
-	for(size_t i = 0; i < winners.size(); i++)
+	for (std::vector<int>::iterator it = losers.begin(); it != losers.end(); it++)
 	{
-		sorted.push_back(winners[i]);
-		if(i < losers.size())
-		{
-			std::vector<int>::iterator pos = std::lower_bound(sorted.begin(),sorted.end(),losers[i]);
-			sorted.insert(pos,losers[i]);
-		}
+		std::vector<int>::iterator pos = std::lower_bound(winners.begin(),winners.end(),*it);
+		winners.insert(pos,*it);
 	}
-	n = sorted;
 	std::cout << "Vector After: ";
+	n = winners;
 	for(size_t i = 0; i < n.size(); i++)
 		std::cout << n[i] << " ";
 }
@@ -149,18 +148,12 @@ void mergeInsertionSortList(std::list<int> &n)
         }
     }
 	winnerSort(winners);
-	std::list<int> sorted;
-	for (std::list<int>::iterator win_it = winners.begin(), lose_it = losers.begin(); win_it != winners.end(); ++win_it)
+	for (std::list<int>::iterator it = losers.begin(); it != losers.end(); it++)
     {
-        sorted.push_back(*win_it);
-        if (lose_it != losers.end())
-        {
-            std::list<int>::iterator pos = std::lower_bound(sorted.begin(), sorted.end(), *lose_it);
-            sorted.insert(pos, *lose_it);
-            ++lose_it;
-        }
+            std::list<int>::iterator pos = std::lower_bound(winners.begin(), winners.end(), *it);
+            winners.insert(pos, *it);
     }
-    n = sorted;
+    n = winners;
     std::cout << "\nList After:   ";
     for (std::list<int>::iterator it = n.begin(); it != n.end(); ++it)
         std::cout << *it << " ";

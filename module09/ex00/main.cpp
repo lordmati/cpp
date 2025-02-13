@@ -49,7 +49,7 @@ int main(int argc, char **argv)
 				std::cout << "Error: not a positive number." << std::endl;
 				continue;
 			}
-			if(inputValue > INT_MAX)
+			if(inputValue > 1000)
 			{
 				std::cout << "Error: too large a number." << std::endl;
 				continue; 
