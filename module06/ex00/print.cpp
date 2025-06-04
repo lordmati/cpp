@@ -92,7 +92,6 @@ void printFloat(float num,bool zero,std::string str)
 			std::cout << "int: " << static_cast<int>(num) << std::endl;
 		else
 			std::cout << "int: impossible" << std::endl;
-		//std::cout << std::fixed << std::setprecision(10); COMENTARSELO A DEPA
 		if(zero == true && (std::atoi(str.c_str()) < 1000000 && std::atoi(str.c_str()) > 0.0001))
 		{
 			std::cout << "float: " << static_cast<float>(num) << ".0f" << std::endl;

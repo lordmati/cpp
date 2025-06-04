@@ -8,10 +8,10 @@ OBJS = $(SRCS:.cpp=.o)
 all: $(TARGET)
 
 $(TARGET): $(OBJS)
-	g++ -Wall -Wextra -Werror -std=c++98 -o $(TARGET) $(OBJS)
+	c++ -Wall -Wextra -Werror -std=c++98 -o $(TARGET) $(OBJS)
 
 %.o: %.cpp
-	g++ -Wall -Wextra -Werror -std=c++98 -c $< -o $@
+	c++ -Wall -Wextra -Werror -std=c++98 -c $< -o $@
 
 clean:
 	rm -f $(OBJS)

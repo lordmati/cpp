@@ -15,7 +15,7 @@ int main()
     size_t length = sizeof(arr) / sizeof(arr[0]);
 
     std::cout << "Original array: ";
-    iter(arr, length, printElement);
+    iter(arr, 7, printElement);
     iter(err,length,printElement);
     std::cout << std::endl;
 

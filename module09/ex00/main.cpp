@@ -39,7 +39,7 @@ int main(int argc, char **argv)
 		{
 			date.erase(0,date.find_first_not_of(" \t"));
 			date.erase(date.find_last_not_of(" \t") + 1);
-			if(!isValidDate(date))
+			if(!isValidDate(date) || !ss.eof())
 			{
 				std::cout << "Error: bad input => " << date << std::endl;
 				continue;
@@ -57,18 +57,18 @@ int main(int argc, char **argv)
 			std::map<std::string,float>::iterator it = data.find(date);
 			if (it == data.end())
 			{
-				std::map<std::string,float>::iterator it = data.lower_bound(date);
-				if(it == data.begin())
+				std::map<std::string,float>::iterator lb = data.lower_bound(date);
+				if(lb == data.begin())
 				{
 					std::cout << "Error: bad input => " << date << std::endl;
 					continue;
 				}
-				if(it == data.end())
-					it--;
-				float result = it->second * inputValue;
+				if(lb == data.end() || lb->first != date)
+					--lb;
+				float result = lb->second * inputValue;
 				std::cout << date << " => " << inputValue << " = " << result << std::endl;
 			}
-			if(it != data.end())
+			else
 			{
 				float result = it->second * inputValue;
 				std::cout << date << " => " << inputValue << " = " << result << std::endl;
